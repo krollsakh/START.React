@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    // если хотим писать без точки с запятой - раскомментить
+    //"semi": "off"
+    "arrow-parens": "off",
+    "comma-dangle": "off",
+    "require-jsdoc": "off",
+    "indent": "off",
+    "no-unused-vars": "off",
+    "max-len": "off",
+    "object-curly-spacing": "off"
+  },
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ]
+}

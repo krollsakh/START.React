@@ -1,0 +1,9 @@
+@import '~normalize.css';
+@import 'fonts';
+
+body {
+  margin: 0;
+  font-family: OpenSansRegular, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
