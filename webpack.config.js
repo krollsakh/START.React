@@ -16,11 +16,9 @@ const jsLoaders = () => {
       options: {
         presets: [
           '@babel/preset-env',
-          '@babel/preset-react',
+          '@babel/react',
           {
-            'plugins': [
-              '@babel/plugin-proposal-class-properties'
-            ]
+            'plugins': ['@babel/plugin-proposal-class-properties']
           }
         ]
       }
@@ -65,12 +63,10 @@ module.exports = {
       collapseWhitespace: isProd
     }),
     new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src/favicon.ico'),
-          to: path.resolve(__dirname, 'dist')
-        }
-      ]
+      patterns: [{
+        from: path.resolve(__dirname, 'src/favicon.ico'),
+        to: path.resolve(__dirname, 'dist')
+      }]
     }),
     new MiniCssExtractPlugin({
       filename: filename('css')
@@ -92,13 +88,24 @@ module.exports = {
           'sass-loader'
         ]
       },
+
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: jsLoaders()
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.(png|jpg|gif|ttf)$/,
+        // loader: 'url-loader',
+        loader: 'file-loader'
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
